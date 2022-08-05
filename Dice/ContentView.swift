@@ -22,9 +22,10 @@ struct ContentView: View {
                 Section {
                     Button("Roll") {
                         rolledNumber = Int.random(in: 1...diceSides)
-                        let roll = Roll(number: rolledNumber)
+                        let roll = Roll(id: UUID(), number: rolledNumber)
                         rolls.rolledNumbers.append(roll)
                         numberOfRolls += 1
+                        rolls.save()
                     }
                     .buttonStyle(.bordered)
                 }
