@@ -12,16 +12,24 @@ struct ContentView: View {
     @StateObject var rolls = Rolls()
     @State private var diceSides = 6
     @State private var numberOfRolls = 0
+    @State private var feedback = UINotificationFeedbackGenerator()
+    
     var body: some View {
         NavigationView {
             List {
                 Section {
                     Stepper("Dice sides: \(diceSides)", value: $diceSides, step: 1)
+                        .accessibilityLabel("Number of dice's sides")
+                } header: {
+                    Text("Number of dice's sides")
                 }
+                .accessibilityHint("Current number \(diceSides)")
                 
                 Section {
                     Button("Roll") {
+                        feedback.prepare()
                         rolledNumber = Int.random(in: 1...diceSides)
+                        feedback.notificationOccurred(.success)
                         let roll = Roll(id: UUID(), number: rolledNumber)
                         rolls.rolledNumbers.append(roll)
                         numberOfRolls += 1
@@ -40,8 +48,10 @@ struct ContentView: View {
                 Section {
                     Text("You rolled the dice \(numberOfRolls) times")
                     Button("Delete history") {
+                        feedback.prepare()
                         numberOfRolls = 0
                         rolls.rolledNumbers = []
+                        feedback.notificationOccurred(.error)
                     }
                     .buttonStyle(.bordered)
                     .tint(.red)
