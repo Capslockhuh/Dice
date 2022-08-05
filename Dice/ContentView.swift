@@ -28,6 +28,7 @@ struct ContentView: View {
                         rolls.save()
                     }
                     .buttonStyle(.bordered)
+                    .tint(.blue)
                 }
                 
                 Section {
@@ -38,6 +39,12 @@ struct ContentView: View {
                 
                 Section {
                     Text("You rolled the dice \(numberOfRolls) times")
+                    Button("Delete history") {
+                        numberOfRolls = 0
+                        rolls.rolledNumbers = []
+                    }
+                    .buttonStyle(.bordered)
+                    .tint(.red)
                     Text("Rolling history: ")
                         .font(.headline)
                     ForEach(rolls.rolledNumbers) { num in
