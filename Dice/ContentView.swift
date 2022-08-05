@@ -10,14 +10,21 @@ import SwiftUI
 struct ContentView: View {
     @State private var rolledNumber = 0
     @StateObject var rolls = Rolls()
+    @State private var diceSides = 6
+    @State private var numberOfRolls = 0
     var body: some View {
         NavigationView {
             List {
                 Section {
+                    Stepper("Dice sides: \(diceSides)", value: $diceSides, step: 1)
+                }
+                
+                Section {
                     Button("Roll") {
-                        rolledNumber = Int.random(in: 1...6)
+                        rolledNumber = Int.random(in: 1...diceSides)
                         let roll = Roll(number: rolledNumber)
                         rolls.rolledNumbers.append(roll)
+                        numberOfRolls += 1
                     }
                     .buttonStyle(.bordered)
                 }
@@ -29,6 +36,7 @@ struct ContentView: View {
                 }
                 
                 Section {
+                    Text("You rolled the dice \(numberOfRolls) times")
                     Text("Rolling history: ")
                         .font(.headline)
                     ForEach(rolls.rolledNumbers) { num in
