@@ -11,6 +11,7 @@
 		6ED0ABB7289CF2700050F714 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0ABB6289CF2700050F714 /* ContentView.swift */; };
 		6ED0ABB9289CF2720050F714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6ED0ABB8289CF2720050F714 /* Assets.xcassets */; };
 		6ED0ABBC289CF2720050F714 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6ED0ABBB289CF2720050F714 /* Preview Assets.xcassets */; };
+		6ED0ABC3289CF3BC0050F714 /* DiceTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED0ABC2289CF3BC0050F714 /* DiceTypes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		6ED0ABB6289CF2700050F714 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6ED0ABB8289CF2720050F714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6ED0ABBB289CF2720050F714 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6ED0ABC2289CF3BC0050F714 /* DiceTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceTypes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				6ED0ABB4289CF2700050F714 /* DiceApp.swift */,
 				6ED0ABB6289CF2700050F714 /* ContentView.swift */,
+				6ED0ABC2289CF3BC0050F714 /* DiceTypes.swift */,
 				6ED0ABB8289CF2720050F714 /* Assets.xcassets */,
 				6ED0ABBA289CF2720050F714 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ED0ABC3289CF3BC0050F714 /* DiceTypes.swift in Sources */,
 				6ED0ABB7289CF2700050F714 /* ContentView.swift in Sources */,
 				6ED0ABB5289CF2700050F714 /* DiceApp.swift in Sources */,
 			);

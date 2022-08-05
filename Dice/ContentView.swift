@@ -9,17 +9,34 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var rolledNumber = 0
+    @StateObject var rolls = Rolls()
     var body: some View {
         NavigationView {
             List {
-                Button("Roll") {
-                    rolledNumber = Int.random(in: 1...6)
+                Section {
+                    Button("Roll") {
+                        rolledNumber = Int.random(in: 1...6)
+                        let roll = Roll(number: rolledNumber)
+                        rolls.rolledNumbers.append(roll)
+                    }
+                    .buttonStyle(.bordered)
                 }
                 
-                Text("Number: \(rolledNumber)")
-                    .font(.title)
-                    .disabled(rolledNumber == 0)
+                Section {
+                    Text("Current Number: \(rolledNumber)")
+                        .font(.headline)
+                        .disabled(rolledNumber == 0)
+                }
+                
+                Section {
+                    Text("Rolling history: ")
+                        .font(.headline)
+                    ForEach(rolls.rolledNumbers) { num in
+                        Text("\(num.number)")
+                    }
+                }
             }
+            .navigationTitle("Dice")
         }
     }
 }
