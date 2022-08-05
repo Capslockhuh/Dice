@@ -8,9 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var rolledNumber = 0
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            List {
+                Button("Roll") {
+                    rolledNumber = Int.random(in: 1...6)
+                }
+                
+                Text("Number: \(rolledNumber)")
+                    .font(.title)
+                    .disabled(rolledNumber == 0)
+            }
+        }
     }
 }
 
