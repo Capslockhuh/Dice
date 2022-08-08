@@ -13,6 +13,8 @@ struct ContentView: View {
     @State private var diceSides = 6
     @State private var numberOfRolls = 0
     @State private var feedback = UINotificationFeedbackGenerator()
+    let timer = Timer.publish(every: 0.5, on: .main, in: .common)
+    @State private var flicks = 3
     
     var body: some View {
         NavigationView {
@@ -28,7 +30,7 @@ struct ContentView: View {
                 Section {
                     Button("Roll") {
                         feedback.prepare()
-                        rolledNumber = Int.random(in: 1...diceSides)
+                        resetTimer()
                         feedback.notificationOccurred(.success)
                         let roll = Roll(id: UUID(), number: rolledNumber)
                         rolls.rolledNumbers.append(roll)
@@ -64,6 +66,19 @@ struct ContentView: View {
             }
             .navigationTitle("Dice")
         }
+        .onReceive(timer) { time in
+            if flicks > 0 {
+                rolledNumber = Int.random(in: 1...diceSides)
+                flicks -= 1
+            } else {
+                
+            }
+        }
+    }
+    
+    func resetTimer() {
+        timer.connect()
+        flicks = 3
     }
 }
 
